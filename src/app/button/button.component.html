@@ -1,0 +1,19 @@
+<div class="container-btn">
+  <button class="btn" (click)="handleChangeColor('red')">Rojo</button>
+  <button class="btn" (click)="handleChangeColor('blue')">Azul</button>
+  <button class="btn" (click)="handleChangeColor('green')">Verde</button>
+</div>
+<p [class]="currentColor ? currentColor : 'gray'">
+  Texto va a cambiar de color
+</p>
+<div class="container-btn">
+  <button
+    (click)="textInverse = !textInverse"
+    [class]="{
+      inverse: textInverse,
+      btn: true
+    }"
+  >
+    Invertir
+  </button>
+</div>

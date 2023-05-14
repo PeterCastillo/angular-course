@@ -1,0 +1,26 @@
+<form [formGroup]="formUser" (ngSubmit)="handleSent()">
+    <div>
+        <label for="">Nombre</label>
+        <input type="text" formControlName="nombre">
+        <div class="alert alert-danger mt-2" [hidden]="nombre.valid || nombre.pristine">
+            El nombre es obligatorio
+        </div>
+    </div>
+    <div>
+        <label for="">Correo</label>
+        <input type="text" formControlName="correo">
+        <div class="alert alert-danger mt-2" [hidden]="correo.valid || correo.pristine" *ngIf="correo.errors?.['required']">
+            El correo es obligatorio
+        </div>
+        <div class="alert alert-danger mt-2" [hidden]="correo.valid || correo.pristine" *ngIf="correo.errors?.['email']">
+            El correo no cumple el formato
+        </div>
+        <button [disabled]="formUser.invalid">
+            Enviar
+        </button>
+    </div>
+</form>
+
+{{
+    formUser.value | json
+}}
